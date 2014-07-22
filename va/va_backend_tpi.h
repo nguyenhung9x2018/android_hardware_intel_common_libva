@@ -36,7 +36,7 @@
 struct VADriverVTableTPI
 {
     VAStatus (*vaCreateSurfacesWithAttribute) (
-        VADisplay dpy,
+        VADriverContextP ctx,
         int width,
         int height,
         int format,
@@ -64,7 +64,7 @@ struct VADriverVTableTPI
         );
 
     VAStatus (*vaSetTimestampForSurface)(
-        VADisplay dpy,
+        VADriverContextP ctx,
         VASurfaceID surface,
         long long timestamp
         );

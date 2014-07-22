@@ -85,6 +85,12 @@
 extern "C" {
 #endif
 
+#ifdef __GNUC__
+# define __maybe_unused __attribute__((__unused__))
+#else
+# define __maybe_unused
+#endif
+
 /**
  * \mainpage Video Acceleration (VA) API
  *
