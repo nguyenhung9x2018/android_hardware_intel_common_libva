@@ -25,6 +25,8 @@
 
 LOCAL_PATH:= $(call my-dir)
 
+ifeq ($(ENABLE_IMG_GRAPHICS),true)
+
 LIBVA_DRIVERS_PATH = /system/lib
 
 # Version set to Android Jelly Bean
@@ -176,3 +178,5 @@ LOCAL_MODULE_TAGS := optional
 LOCAL_MODULE := libva-tpi
 
 include $(BUILD_SHARED_LIBRARY)
+
+endif # $(ENABLE_IMG_GRAPHICS),true)
