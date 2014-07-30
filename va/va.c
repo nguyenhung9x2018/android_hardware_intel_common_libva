@@ -249,7 +249,7 @@ static VAStatus va_openDriver(VADisplay dpy, char *driver_name)
                 { VA_MAJOR_VERSION, VA_MINOR_VERSION },
                 { 0, 33 },
                 { 0, 32 },
-                { -1, }
+                { -1, 0}
             };
 
             for (i = 0; compatible_versions[i].major >= 0; i++) {
@@ -1029,21 +1029,21 @@ VAStatus vaDestroyBuffer (
 
 VAStatus vaBufferInfo (
     VADisplay dpy,
-    VAContextID context,	/* in */
+    VAContextID __maybe_unused context,	/* in */
     VABufferID buf_id,		/* in */
     VABufferType *type,		/* out */
     unsigned int *size,		/* out */
     unsigned int *num_elements	/* out */
 )
 {
-  VADriverContextP ctx;
-  
-  CHECK_DISPLAY(dpy);
-  ctx = CTX(dpy);
+    VADriverContextP ctx;
 
-  VA_FOOL_FUNC(va_FoolBufferInfo, dpy, buf_id, type, size, num_elements);
-  
-  return ctx->vtable->vaBufferInfo( ctx, buf_id, type, size, num_elements );
+    CHECK_DISPLAY(dpy);
+    ctx = CTX(dpy);
+
+    VA_FOOL_FUNC(va_FoolBufferInfo, dpy, buf_id, type, size, num_elements);
+
+    return ctx->vtable->vaBufferInfo( ctx, buf_id, type, size, num_elements );
 }
 
 VAStatus vaBeginPicture (

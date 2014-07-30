@@ -163,7 +163,7 @@ int va_FoolEnd(VADisplay dpy)
 
     free(fool_ctx);
     ((VADisplayContextP)dpy)->vafool = NULL;
-    
+
     return 0;
 }
 
@@ -171,15 +171,15 @@ int va_FoolCreateConfig(
         VADisplay dpy,
         VAProfile profile, 
         VAEntrypoint entrypoint, 
-        VAConfigAttrib *attrib_list,
-        int num_attribs,
-        VAConfigID *config_id /* out */
+        VAConfigAttrib __maybe_unused *attrib_list,
+        int __maybe_unused num_attribs,
+        VAConfigID __maybe_unused *config_id /* out */
 )
 {
     DPY2FOOLCTX(dpy);
 
     fool_ctx->entrypoint = entrypoint;
-    
+
     /*
      * check fool_codec to align with current context
      * e.g. fool_codec = decode then for encode, the
@@ -208,18 +208,17 @@ int va_FoolCreateConfig(
     else
         va_infoMessage("FOOL is not enabled for this context\n");
 
-    
     return 0; /* continue */
 }
 
 
 VAStatus va_FoolCreateBuffer(
     VADisplay dpy,
-    VAContextID context,	/* in */
+    VAContextID __maybe_unused context,	/* in */
     VABufferType type,		/* in */
     unsigned int size,		/* in */
     unsigned int num_elements,	/* in */
-    void *data,			/* in */
+    void __maybe_unused *data,			/* in */
     VABufferID *buf_id		/* out */
 )
 {
