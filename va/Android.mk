@@ -34,6 +34,9 @@ ALOG_VERSION_REQ := 4.1
 ALOG_VERSION := $(filter $(ALOG_VERSION_REQ),$(firstword $(sort $(PLATFORM_VERSION) \
                                    $(ALOG_VERSION_REQ))))
 
+# Clang does not like partially initialized structures
+# in va_fool.c, va.c and va_drm_utils.c.
+
 include $(CLEAR_VARS)
 
 #LIBVA_MINOR_VERSION := 31
@@ -43,6 +46,8 @@ LOCAL_SRC_FILES := \
 	va.c \
 	va_trace.c \
 	va_fool.c
+
+LOCAL_CLANG_CFLAGS += -Wno-missing-field-initializers
 
 LOCAL_CFLAGS := \
 	-DANDROID \
@@ -109,6 +114,8 @@ LOCAL_SRC_FILES := \
 LOCAL_CFLAGS := \
 	-DANDROID -DLOG_TAG=\"libva-android\"
 
+LOCAL_CLANG_CFLAGS += -Wno-missing-field-initializers
+
 LOCAL_C_INCLUDES := \
 	$(TARGET_OUT_HEADERS)/libva \
 	$(TARGET_OUT_HEADERS)/libdrm \
@@ -157,6 +164,8 @@ include $(BUILD_SHARED_LIBRARY)
 # =====================================================
 
 include $(CLEAR_VARS)
+
+LOCAL_CLANG_CFLAGS += -Wno-missing-field-initializers
 
 LOCAL_SRC_FILES := va_tpi.c
 
