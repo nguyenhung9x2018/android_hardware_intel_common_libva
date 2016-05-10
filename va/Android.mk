@@ -56,7 +56,6 @@ LOCAL_C_INCLUDES := \
 
 LOCAL_COPY_HEADERS := \
 	va.h \
-	va_version.h \
 	va_dec_hevc.h \
 	va_dec_jpeg.h \
 	va_dec_vp8.h \
@@ -80,13 +79,13 @@ LOCAL_SHARED_LIBRARIES := libdl libdrm libcutils liblog
 
 include $(BUILD_SHARED_LIBRARY)
 
-GEN := $(LOCAL_PATH)/va_version.h
+GEN := $(TARGET_OUT_HEADERS)/libva/va/va_version.h
 $(GEN): SCRIPT := $(LOCAL_PATH)/../build/gen_version.sh
 $(GEN): PRIVATE_PATH := $(LOCAL_PATH)
-$(GEN): PRIVATE_CUSTOM_TOOL = sh $(SCRIPT) $(PRIVATE_PATH)/.. $(PRIVATE_PATH)/va_version.h.in > $@
-$(GEN): $(LOCAL_PATH)/%.h : $(LOCAL_PATH)/%.h.in $(SCRIPT) $(LOCAL_PATH)/../configure.ac
+$(GEN): PRIVATE_CUSTOM_TOOL = /bin/bash $(SCRIPT) $(PRIVATE_PATH)/.. $(PRIVATE_PATH)/va_version.h.in > $@
+$(GEN): $(LOCAL_PATH)/va_version.h.in $(LOCAL_PATH)/../build/gen_version.sh $(LOCAL_PATH)/../configure.ac
 	$(transform-generated-source)
-LOCAL_GENERATED_SOURCES += $(GEN) 
+all_copied_headers: $(GEN)
 
 # For libva-android
 # =====================================================
