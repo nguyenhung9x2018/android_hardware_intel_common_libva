@@ -78,6 +78,10 @@ LOCAL_COPY_HEADERS := \
 LOCAL_COPY_HEADERS_TO := libva/va
 LOCAL_CFLAGS += -Werror
 
+ifeq ($(BOARD_USES_PRE_ION_X86),true)
+   LOCAL_CFLAGS += -DPRE_ION_X86
+endif
+
 LOCAL_SHARED_LIBRARIES := libdl libdrm libcutils liblog
 
 GEN := $(generated_sources_dir)/va/va_version.h
@@ -114,6 +118,10 @@ LOCAL_C_INCLUDES := \
 	$(TARGET_OUT_HEADERS)/libdrm \
 	$(LOCAL_PATH)/drm
 
+ifeq ($(BOARD_USES_PRE_ION_X86),true)
+   LOCAL_CFLAGS += -DPRE_ION_X86
+endif
+
 LOCAL_COPY_HEADERS_TO := libva/va
 
 LOCAL_COPY_HEADERS := va_android.h		
@@ -141,6 +149,10 @@ LOCAL_C_INCLUDES := \
 	$(TARGET_OUT_HEADERS)/libva \
 	$(LOCAL_PATH)/x11
 
+ifeq ($(BOARD_USES_PRE_ION_X86),true)
+   LOCAL_CFLAGS += -DPRE_ION_X86
+endif
+
 LOCAL_COPY_HEADERS_TO := libva/va
 
 LOCAL_COPY_HEADERS := egl/va_egl.h egl/va_backend_egl.h
@@ -167,6 +179,10 @@ LOCAL_CFLAGS := -DANDROID -DLOG_TAG=\"libva-tpi\"
 LOCAL_C_INCLUDES := \
 	$(TARGET_OUT_HEADERS)/libva \
 	$(LOCAL_PATH)/..
+
+ifeq ($(BOARD_USES_PRE_ION_X86),true)
+   LOCAL_CFLAGS += -DPRE_ION_X86
+endif
 
 LOCAL_COPY_HEADERS_TO := libva/va
 
