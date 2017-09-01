@@ -2501,7 +2501,7 @@ typedef struct _VAParseSliceHeaderGroupBuffer
 	unsigned char chroma_log2_weight_denom;
 	unsigned char cabac_init_idc;
 
-#ifdef ASUS_ZENFONE2_LP_BLOBS
+#ifdef PRE_ION_X86
         unsigned char pic_order_cnt_lsb;
         unsigned char pic_parameter_set_id;
         unsigned short idr_pic_id;
@@ -3237,7 +3237,7 @@ typedef struct _VADisplayAttribute
     int value;	/* used by the set/get attribute functions */
 /* flags can be VA_DISPLAY_ATTRIB_GETTABLE or VA_DISPLAY_ATTRIB_SETTABLE or OR'd together */
     unsigned int flags;
-#ifndef ASUS_ZENFONE2_LP_BLOBS
+#ifndef PRE_ION_X86
     void *attrib_ptr; /* if flags contains VA_DISPLAY_ATTRIB_POINTER, then "attrib_ptr" points to a structure for this display attribute */
 #endif
 } VADisplayAttribute;
