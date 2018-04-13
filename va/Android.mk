@@ -55,6 +55,9 @@ LOCAL_CFLAGS := \
 LOCAL_EXPORT_C_INCLUDE_DIRS := $(LOCAL_PATH)/.. $(generated_sources_dir)
 
 LOCAL_C_INCLUDES := \
+	frameworks/native/libs/nativewindow/include \
+	frameworks/native/libs/nativebase/include \
+	frameworks/native/libs/arect/include \
 	$(TARGET_OUT_HEADERS)/libva \
 	$(LOCAL_PATH)/x11 \
 	$(LOCAL_PATH)/..
@@ -114,6 +117,9 @@ LOCAL_CFLAGS := \
 LOCAL_CLANG_CFLAGS += -Wno-missing-field-initializers
 
 LOCAL_C_INCLUDES := \
+	frameworks/native/libs/nativewindow/include \
+	frameworks/native/libs/nativebase/include \
+	frameworks/native/libs/arect/include \
 	$(TARGET_OUT_HEADERS)/libva \
 	$(TARGET_OUT_HEADERS)/libdrm \
 	$(LOCAL_PATH)/drm
@@ -146,6 +152,9 @@ LOCAL_CFLAGS := \
 	-DANDROID -DLOG_TAG=\"libva-egl\"
 
 LOCAL_C_INCLUDES := \
+	frameworks/native/libs/nativewindow/include \
+	frameworks/native/libs/nativebase/include \
+	frameworks/native/libs/arect/include \
 	$(TARGET_OUT_HEADERS)/libva \
 	$(LOCAL_PATH)/x11
 
@@ -177,6 +186,9 @@ LOCAL_SRC_FILES := va_tpi.c
 LOCAL_CFLAGS := -DANDROID -DLOG_TAG=\"libva-tpi\"
 
 LOCAL_C_INCLUDES := \
+	frameworks/native/libs/nativewindow/include \
+	frameworks/native/libs/nativebase/include \
+	frameworks/native/libs/arect/include \
 	$(TARGET_OUT_HEADERS)/libva \
 	$(LOCAL_PATH)/..
 
